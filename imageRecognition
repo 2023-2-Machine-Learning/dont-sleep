@@ -1,0 +1,26 @@
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt #graph
+from google.colab.patches import cv2_imshow
+
+#구글 드라이브 내의 이미지를 불러오므로 드라이브 마운트
+from google.colab import drive
+drive.mount('/content/drive')
+
+# 이미지 읽어오기
+imageFile='/content/drive/MyDrive/open.PNG'
+img=cv2.imread(imageFile, cv2.IMREAD_COLOR)
+rgbImg=cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+def handleImage():
+  plt.imshow(rgbImg)
+
+if __name__ == '__main__' :
+  handleImage() 
+
+#opencv 사각형 그리기
+#color 설정
+blueColor = (0,0,255)
+
+#그릴 이미지, 시작점, 끝점, 선두께
+rectImg = cv2.rectangle(rgbImg,(150,500),(500,100),blueColor,3)
+plt.imshow(rectImg)
